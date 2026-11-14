@@ -44,6 +44,60 @@
     .badge-word {
       background: linear-gradient(135deg, #185abd 0%, #10448a 100%);
     }
+
+    /* Glossy & Blinking Alert Banner */
+    .glossy-banner {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 45%, #fde68a 100%);
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid #f59e0b;
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -1px 2px rgba(217, 119, 6, 0.15),
+        0 4px 14px rgba(245, 158, 11, 0.2);
+    }
+
+    /* Glossy animated light shimmer sweep */
+    .glossy-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 75%;
+      height: 100%;
+      background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        transparent
+      );
+      transform: skewX(-25deg);
+      animation: glossy-shimmer 3s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes glossy-shimmer {
+      0% { left: -150%; }
+      45%, 100% { left: 160%; }
+    }
+
+    /* Blinking statement animation */
+    .blinking-text {
+      animation: blink-statement 1.3s infinite ease-in-out;
+    }
+
+    @keyframes blink-statement {
+      0%, 100% {
+        opacity: 1;
+        color: #78350f; /* Deep rich amber */
+        text-shadow: 0 0 2px rgba(245, 158, 11, 0.4);
+      }
+      50% {
+        opacity: 0.25;
+        color: #b45309;
+        text-shadow: none;
+      }
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
@@ -123,6 +177,21 @@
       <!-- Category Filter Pills (Distinct Color Boxes) -->
       <div id="category-chips" class="flex flex-wrap items-center gap-3 pt-1">
         <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Glossy & Blinking Notice Banner -->
+      <div class="glossy-banner rounded-2xl p-3.5 sm:p-4 mt-2 flex items-center space-x-3.5">
+        <div class="relative shrink-0 flex items-center justify-center">
+          <span class="absolute inline-flex h-8 w-8 rounded-full bg-amber-400 opacity-75 animate-ping"></span>
+          <div class="relative w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-sm font-bold text-sm">
+            🔔
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm sm:text-base font-extrabold leading-snug blinking-text">
+            All the documents are updated with new logo, you are hereby informed to use the documents by downloading it here
+          </p>
+        </div>
       </div>
     </div>
 
