@@ -11,6 +11,8 @@ word-document-portal/
 ├── index.html        # Main landing page & user interface
 ├── documents.js      # List of all your documents (add new forms here)
 ├── app.js            # Search, filter, sorting, and UI interactions
+├── Round Logo.jpg    # Top navigation logo & favicon
+├── Updated Logo.jpeg # Main header institutional logo
 ├── .nojekyll         # Disables Jekyll on GitHub Pages (ensures fast static serving)
 ├── README.md         # Deployment guide
 └── files/            # Put all your .docx or .doc files here
