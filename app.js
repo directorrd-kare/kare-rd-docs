@@ -10,6 +10,40 @@ const CATEGORIES = [
   "For SRC Chairman"
 ];
 
+// Distinct Color Themes for each category
+const CATEGORY_THEMES = {
+  "For Scholars": {
+    name: "For Scholars",
+    // Selected: Solid Rich Blue
+    active: "bg-blue-600 hover:bg-blue-700 text-white shadow-md ring-3 ring-blue-500/30 border-2 border-blue-600",
+    // Unselected: Distinct Light Blue Box with strong border
+    inactive: "bg-blue-50 hover:bg-blue-100 text-blue-900 border-2 border-blue-200 hover:border-blue-300",
+    badgeActive: "bg-white/25 text-white",
+    badgeInactive: "bg-blue-200 text-blue-900",
+    tag: "bg-blue-50 text-blue-800 border border-blue-200"
+  },
+  "For Supervisors": {
+    name: "For Supervisors",
+    // Selected: Solid Forest Emerald Green
+    active: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-md ring-3 ring-emerald-500/30 border-2 border-emerald-600",
+    // Unselected: Distinct Light Emerald Box with strong border
+    inactive: "bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border-2 border-emerald-200 hover:border-emerald-300",
+    badgeActive: "bg-white/25 text-white",
+    badgeInactive: "bg-emerald-200 text-emerald-900",
+    tag: "bg-emerald-50 text-emerald-800 border border-emerald-200"
+  },
+  "For SRC Chairman": {
+    name: "For SRC Chairman",
+    // Selected: Solid Royal Purple
+    active: "bg-purple-600 hover:bg-purple-700 text-white shadow-md ring-3 ring-purple-500/30 border-2 border-purple-600",
+    // Unselected: Distinct Light Purple Box with strong border
+    inactive: "bg-purple-50 hover:bg-purple-100 text-purple-900 border-2 border-purple-200 hover:border-purple-300",
+    badgeActive: "bg-white/25 text-white",
+    badgeInactive: "bg-purple-200 text-purple-900",
+    tag: "bg-purple-50 text-purple-800 border border-purple-200"
+  }
+};
+
 let state = {
   searchQuery: '',
   activeCategory: 'For Scholars', // Default to first category
@@ -48,12 +82,13 @@ function init() {
   renderDocuments();
 }
 
-// Generate the 3 Category Filter Buttons (No "All" option)
+// Generate the 3 Category Filter Buttons (No "All" option, Larger Font, Distinct Colors)
 function renderCategoryChips() {
   categoryChipsContainer.innerHTML = '';
 
   CATEGORIES.forEach(cat => {
     const isSelected = state.activeCategory === cat;
+    const theme = CATEGORY_THEMES[cat] || CATEGORY_THEMES["For Scholars"];
     
     // Count documents for this category
     const docCount = documentsData.filter(d => 
@@ -62,16 +97,15 @@ function renderCategoryChips() {
 
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = `inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
-      isSelected 
-        ? 'bg-brand-600 text-white shadow-sm ring-2 ring-brand-600/30 font-bold' 
-        : 'bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium'
+    // Font size increased by 2 levels: from text-xs (12px) to text-base (16px) font-bold
+    btn.className = `inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-xl text-base font-bold transition-all whitespace-nowrap cursor-pointer ${
+      isSelected ? theme.active : theme.inactive
     }`;
 
     btn.innerHTML = `
       <span>${cat}</span>
-      <span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-        isSelected ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-600'
+      <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-black ${
+        isSelected ? theme.badgeActive : theme.badgeInactive
       }">${docCount}</span>
     `;
 
@@ -232,12 +266,13 @@ function renderDocuments() {
   // Render Grid Cards
   documentsGrid.innerHTML = filtered.map(doc => {
     const filePath = `files/${encodeURIComponent(doc.filename)}`;
+    const theme = CATEGORY_THEMES[doc.category] || CATEGORY_THEMES["For Scholars"];
     return `
       <div class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs hover:shadow-md hover:border-brand-200 transition-all flex flex-col justify-between">
         <div class="space-y-3">
           <!-- Top Category Tag -->
           <div class="flex items-center justify-between">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-brand-50 text-brand-700">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold ${theme.tag}">
               ${doc.category}
             </span>
             <span class="inline-flex items-center text-xs text-slate-400 font-mono">
@@ -288,6 +323,7 @@ function renderDocuments() {
   // Render Table Rows (List View)
   documentsTableBody.innerHTML = filtered.map(doc => {
     const filePath = `files/${encodeURIComponent(doc.filename)}`;
+    const theme = CATEGORY_THEMES[doc.category] || CATEGORY_THEMES["For Scholars"];
     return `
       <tr class="hover:bg-slate-50/80 transition group">
         <td class="py-3.5 px-4 sm:px-6">
@@ -306,7 +342,7 @@ function renderDocuments() {
           </div>
         </td>
         <td class="py-3.5 px-4 hidden sm:table-cell text-xs">
-          <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-brand-50 text-brand-700 font-medium">
+          <span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold ${theme.tag}">
             ${doc.category}
           </span>
         </td>
