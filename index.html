@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Office of Research and Development, KARE - Document Download Center</title>
+  <meta name="description" content="Office of Research and Development, KARE - Document Download Center for official Word files and forms.">
+  
+  <!-- Favicon / Doc Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23185abd'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><polyline points='10 9 9 9 8 9'/></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f5fc',
+              100: '#e1ecf9',
+              200: '#c5daf4',
+              500: '#2b579a', // Classic Microsoft Word blue
+              600: '#185abd', // Modern Office blue
+              700: '#10448a',
+              800: '#0c346a',
+              900: '#09254d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .badge-word {
+      background: linear-gradient(135deg, #185abd 0%, #10448a 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- Word File Icon -->
+        <div class="w-10 h-10 rounded-xl badge-word flex items-center justify-center text-white shadow-md shadow-brand-500/20 font-bold text-lg">
+          W
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">Office of Research and Development, KARE</h1>
+          <p class="text-xs text-brand-600 font-medium">Document Download Center</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200/80 py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center space-y-2">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Office of Research and Development, KARE
+      </h2>
+      <h3 class="text-xl sm:text-2xl font-bold text-brand-600 tracking-tight">
+        Document Download Center
+      </h3>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
+
+    <!-- Controls: Search, Filter, Sort, View Toggle -->
+    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-4">
+      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+        <!-- Search Box -->
+        <div class="relative flex-1">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"></circle><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2" stroke-linecap="round"></line></svg>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search documents by title, keyword, or filename..." 
+            class="w-full pl-10 pr-10 py-2.5 bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-brand-500 rounded-xl text-sm focus:outline-hidden focus:ring-3 focus:ring-brand-500/15 transition-all text-slate-800 placeholder-slate-400"
+          >
+          <button id="clear-search-btn" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600" title="Clear search">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Sort Dropdown & View Mode Switcher -->
+        <div class="flex items-center space-x-2.5">
+          <div class="flex items-center space-x-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-700">
+            <label for="sort-select" class="text-slate-500 hidden sm:inline">Sort:</label>
+            <select id="sort-select" class="bg-transparent font-medium text-slate-700 focus:outline-hidden cursor-pointer">
+              <option value="name-asc">Order: 1, 2, 3...</option>
+              <option value="name-desc">Reverse: ..., 3, 2, 1</option>
+            </select>
+          </div>
+
+          <!-- View Toggle Buttons -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button id="btn-view-grid" class="p-1.5 rounded-lg text-brand-600 bg-white shadow-xs transition" title="Grid View">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1" stroke-width="2"></rect><rect x="14" y="3" width="7" height="7" rx="1" stroke-width="2"></rect><rect x="14" y="14" width="7" height="7" rx="1" stroke-width="2"></rect><rect x="3" y="14" width="7" height="7" rx="1" stroke-width="2"></rect></svg>
+            </button>
+            <button id="btn-view-list" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition" title="List View">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6" stroke-width="2" stroke-linecap="round"></line><line x1="8" y1="12" x2="21" y2="12" stroke-width="2" stroke-linecap="round"></line><line x1="8" y1="18" x2="21" y2="18" stroke-width="2" stroke-linecap="round"></line><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="2" stroke-linecap="round"></line><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="2" stroke-linecap="round"></line><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="2" stroke-linecap="round"></line></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div id="category-chips" class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Active Filter Status and Count -->
+    <div class="flex items-center justify-between text-xs text-slate-500 px-1">
+      <span id="results-count-text">Showing files</span>
+      <span id="filter-tag" class="hidden font-medium text-brand-600 bg-brand-50 px-2 py-0.5 rounded-md border border-brand-200"></span>
+    </div>
+
+    <!-- Document Grid Container -->
+    <div id="documents-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Document Table Container (List View) -->
+    <div id="documents-table-wrapper" class="hidden bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-600">
+          <thead class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-700 uppercase tracking-wider">
+            <tr>
+              <th scope="col" class="py-3.5 px-4 sm:px-6">Document Name</th>
+              <th scope="col" class="py-3.5 px-4 hidden sm:table-cell">Category</th>
+              <th scope="col" class="py-3.5 px-4 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="documents-table-body" class="divide-y divide-slate-100">
+            <!-- Injected by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 px-4 bg-white border border-dashed border-slate-300 rounded-2xl">
+      <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"></circle><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2" stroke-linecap="round"></line></svg>
+      </div>
+      <h3 id="empty-state-title" class="text-base font-bold text-slate-800">No documents found</h3>
+      <p id="empty-state-desc" class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">We couldn't find any file matching your search query.</p>
+      <button id="btn-reset-filters" class="mt-4 inline-flex items-center px-4 py-2 text-xs font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 rounded-xl transition">
+        Reset Search
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center space-x-3 z-50 text-sm">
+    <div id="toast-icon" class="text-emerald-400">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <span id="toast-message">File download started!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>&copy; <span id="current-year"></span> Office of Research and Development, KARE. All files available for direct download.</p>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="hover:text-slate-800 transition">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="documents.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
