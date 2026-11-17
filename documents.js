@@ -189,10 +189,10 @@ const documentsData = [
   },
   {
     id: "doc-25",
-    title: "13. Template for Thesis Correction RAC Meeting",
-    filename: "13.Format for Thesis Evaluation Reports Review Minutes-Without Correction.docx",
+    title: "13. Format for Thesis Correction Meeting Circular",
+    filename: "13.Format for Thesis Correction Meeting Circular.docx",
     category: "For Supervisors",
-    description: "Template for Thesis Correction RAC Meeting"
+    description: "Format for Thesis Correction Meeting Circular"
   },
   {
     id: "doc-26",
